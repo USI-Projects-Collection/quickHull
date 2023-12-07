@@ -13,5 +13,5 @@ function draw() {
     background(0); // Set the background color
 
     // Draw an ellipse at the center of the canvas
-    ellipse(width / 2, height / 2, 50, 50);
+    ellipse(canvasWidth / 2, canvasHeight / 2, 50, 50);
 }
