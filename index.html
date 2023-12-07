@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>quickHull</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="p5.js" defer></script>
+    <script src="p5.js"></script>
+    <script src="canvas.js" defer></script>
+    <style>
+        body {
+            color: white;
+            background-color: black;
+            margin: 0; /* Remove default margin to make the body fill the entire viewport */
+        }
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh; /* 100% of the viewport height */
+        }
+        .container-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            flex: 1; /* Grow and shrink equally */
+        }
+        #canvas {
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="main-container">
+        <div class="container-item">
+            <div id="canvas"></div>
+        </div>
+        <div class="container-item">
+            <p>molto bene</p>
+        </div>
+    </div>
 </body>
 </html>
