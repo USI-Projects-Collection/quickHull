@@ -10,6 +10,13 @@ const colors = {
     WHITE : [255, 255, 255],
 }
 
+// enumerator of keys
+const keys = {
+    LEFT : 37,
+    RIGHT : 39,
+    SPACE : 32,
+}
+
 // Function to generate an array of white points
 function generateSetOfPoints(n) {
     let points = [];
@@ -23,10 +30,27 @@ function generateSetOfPoints(n) {
     return points;
 }
 
+// Function to draw a point with its color
 function drawPoint(_point) {
     stroke(_point.color);
     strokeWeight(4);
     point(_point);
+}
+
+// Function to draw an array of points
+function drawPoints(points, numbers = false) {
+    for (let i = 0; i < points.length; i++) {
+        drawPoint(points[i]);
+        
+        if (numbers) {
+            // Draw the label
+            fill(255);
+            noStroke();
+            textSize(12);
+            textAlign(CENTER, BOTTOM);
+            text(i + 1, points[i].x, points[i].y - 8); // Adjust the value -8 to position the label relative to the point
+        }
+    }
 }
 
 function drawCircle(_point, color = colors.RED) {
@@ -48,19 +72,4 @@ function sortPoints(points) {
         return a.x - b.x;
     });
     return points;
-}
-
-function drawPoints(points, numbers = false) {
-    for (let i = 0; i < points.length; i++) {
-        drawPoint(points[i]);
-        
-        if (numbers) {
-            // Draw the label
-            fill(255);
-            noStroke();
-            textSize(12);
-            textAlign(CENTER, BOTTOM);
-            text(i + 1, points[i].x, points[i].y - 8); // Adjust the value -8 to position the label relative to the point
-        }
-    }
 }
