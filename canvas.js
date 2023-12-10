@@ -4,19 +4,22 @@ let canvasWidth = 600; // Initial canvas width
 let canvasHeight = 800; // Initial canvas height
 let animationStep = 0; // Variable to control the animation state
 let canvasHistory = []; // Array to hold the canvas snapshots
-
-let nPoints = 10; // Number of points
-let points; // Array to hold the set of points
+let microSteps = false; // Variable to control the micro steps
 
 function setup() {
     // Specify the parent container for the canvas using the parent() function
     myCanvas = createCanvas(canvasWidth, canvasHeight).parent('canvas');
+
     // Generate the set of points once in the setup
     points = generateSetOfPoints(nPoints);
     // clear the canvas history
     canvasHistory = [];
+    // Reset the convex hull
+    hull = [];
+    // Reset the animation step
+    animationStep = 0;
     // Create the animation
-    createAnimation();
+    createAnimation(points);
 }
 
 function draw() {
@@ -38,5 +41,21 @@ function keyPressed() {
         }
     } else if (keyCode === keys.SPACE) {
         setup(); // Reset the animation
+    } else if (keyCode === keys.M) {
+        microSteps = !microSteps; // Toggle the micro steps
+        document.getElementById('microSteps').innerHTML = "Micro steps: " + (microSteps? "ON" : "OFF");
+        setup(); // Create the animation
+    } else if (keyCode === keys.S) {
+        for (let i = 0; i < 5; i++) {
+            if (animationStep < canvasHistory.length - 1) {
+                animationStep++; // Move to the next point
+            }
+        }
+    } else if (keyCode === keys.ZERO) {
+        // go back to the first step
+        animationStep = 0;
+    } else if (keyCode === keys.NINE) {
+        // go to the last step
+        animationStep = canvasHistory.length - 1;
     }
 }

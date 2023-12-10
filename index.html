@@ -8,6 +8,7 @@
     <script src="canvas.js" defer></script>
     <script src="utilities.js"></script>
     <script src="animation.js"></script>
+    <script src="quickHullLogic.js"></script>
     <style>
         body {
             color: white;
@@ -39,8 +40,13 @@
             <div id="canvas"></div>
         </div>
         <div class="container-item">
+            <p id="microSteps">Micro steps: OFF</p>
             <p>molto bene</p>
             <p id="step"></p>
+            <p>Worst case time complexity: Θ(N^2)</p>
+            <p>Average case time complexity: Θ(N log N)</p>
+            <p>Best case time complexity: Θ(N log N)</p>
+            <p>Space complexity: Θ(N)</p>
         </div>
     </div>
 </body>
